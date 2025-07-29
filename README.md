@@ -10,6 +10,10 @@ Acceso a datos la aplicacion AIRTABLE
 
 Archivos para ver a api de github. Un unico nivel de profundidad
 
+## 📁pokeapi
+
+Buscador de pokemones generado por IA
+
 ## 📁 themoviedb - recorrer apis en JS
 
 Para poder usar el buscador de peliculas hay que registrase en [themoviedb](https://www.themoviedb.org/) y obtener la API_KEY  y la ACCESS_TOKEN.
