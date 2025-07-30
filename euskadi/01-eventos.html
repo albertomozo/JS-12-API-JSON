@@ -1,0 +1,23 @@
+<script>
+const urlBase = 'https://api.euskadi.eus/culture/events';
+const hoy = new Date();
+const anyo = hoy.getFullYear();
+const mes = hoy.getMonth();
+const dia = hoy.getDate();
+//const eventos = urlBase + '/v1.0/events/byDate/2025/07/30?_elements=400&_page=1';
+const eventos = `${urlBase}/v1.0/events/byDate/${anyo}/${mes+1}/${dia}/byMunicipality/20/82?_elements=400&_page=1`;
+console.log(eventos);
+fetch(eventos)
+  .then((response) => response.text())
+  .then((result) => {
+        /* logica de programacion */
+        data=JSON.parse(result);
+        console.log(data);
+  })
+  .catch((error) => console.error(error));
+
+
+
+
+
+</script>

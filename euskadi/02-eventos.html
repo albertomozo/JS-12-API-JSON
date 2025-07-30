@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="Eskoriatza">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+</head>
+<body>
+    <h1>Eventos Donosti</h1>
+    <section id="eventos">
+        <article>
+            <h2>Noombre evento</h2>
+            <img src="" alt="">
+            <p>Hora</p>
+            <p>long ,lat</p>
+
+
+        </article>
+
+    </section>
+</body>
+</html>
+
+
+<script>
+const urlBase = 'https://api.euskadi.eus/culture/events';
+const hoy = new Date();
+const anyo = hoy.getFullYear();
+const mes = hoy.getMonth();
+const dia = hoy.getDate();
+//const eventos = urlBase + '/v1.0/events/byDate/2025/07/30?_elements=400&_page=1';
+const eventos = `${urlBase}/v1.0/events/byDate/${anyo}/${mes+1}/${dia}/byMunicipality/20/82?_elements=400&_page=1`;
+console.log(eventos);
+fetch(eventos)
+  .then((response) => response.text())
+  .then((result) => {
+        /* logica de programacion */
+        data=JSON.parse(result);
+        console.log(data);
+        const eventos = data.items;
+        for (let i=0;i<eventos.length;i++){
+            console.log(`🟩 ${eventos[i].nameEs}`);
+        }
+  })
+  .catch((error) => console.error(error));
+</script>
