@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Búsqueda de fotos Unsplash</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #results img { width: 200px; margin: 10px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Buscar fotos en Unsplash</h1>
+  <input type="text" id="searchInput" placeholder="Escribe un término...">
+  <button id="searchBtn">Buscar</button>
+  <div id="results"></div>
+  <script src="00-api-key.js"></script>
+  <script>
+    
+
+    document.getElementById("searchBtn").addEventListener("click", function() {
+      var query = document.getElementById("searchInput").value;
+      if (!query) return;
+
+      var url = "https://api.unsplash.com/search/photos?query=" + encodeURIComponent(query) + "&client_id=" + ACCESS_KEY;
+
+      fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          var resultsDiv = document.getElementById("results");
+          resultsDiv.innerHTML = ""; // limpiar resultados previos
+
+          data.results.forEach(function(photo) {
+            var img = document.createElement("img");
+            img.src = photo.urls.small;
+            img.alt = photo.alt_description || "Foto de Unsplash";
+            resultsDiv.appendChild(img);
+          });
+        })
+        .catch(function(error) {
+          console.error("Error en la búsqueda:", error);
+        });
+    });
+  </script>
+</body>
+</html>

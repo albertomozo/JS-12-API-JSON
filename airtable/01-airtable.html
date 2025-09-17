@@ -9,7 +9,10 @@
   <h1>Airtable</h1>
   <p>Airtable proporciona una API con un control de permisos muy granulados.</p>
   <p>Las claves usadas en esta API tiene solo permisos de lectura, por lo tanto se pueden usar en JS cliente</p>
-  <h3>Mira la consola de JS para ver el resultado de la tabla productos de airtable</h3>
+  <section id="productos">
+
+  </section>
+
 </body>
 </html>
 <script src="config.js"></script>
@@ -24,7 +27,22 @@ const requestOptions = {
 
 fetch("https://api.airtable.com/v0/appLLNRwDQ9NC4BOj/Productos", requestOptions)
   .then((response) => response.text())
-  .then((result) => console.log(result))
+  .then((result) => {
+    console.log('------ datos en string  -------' + result)
+    const data = JSON.parse(result);
+    console.log('----  datos en json -------- ')
+    console.log(data);
+    const productos = data.records;
+    let resultadoProductos = '';
+    for (let i=0;i<productos.length;i++){
+        console.log(`🟩 ${productos[i].fields.Nombre}`);
+        resultadoProductos += `<article class='producto' id="${productos[i].id}">
+        <h2>${productos[i].fields.Nombre}</h2>
+        <p>Precio : ${productos[i].fields.Precio} €</p>`;
+    }
+    document.getElementById('productos').innerHTML = resultadoProductos;
+  }
+    )
   .catch((error) => console.error(error));
 
   </script>

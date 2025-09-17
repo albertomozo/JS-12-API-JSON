@@ -1,4 +1,6 @@
 ./themoviedb/assets/js/config_propio.js
 ./themoviedb/assets/js/config.js
 themoviedb/assets/js/config.js
+unsplash/00-api-key.js
+airtable/config.js
 .vscode

@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos</title>
-    <style>
-        body  {
-            background-color: aquamarine;
-        }
-    </style>
 </head>
 <body>
     <h1>Eventos Donosti</h1>
@@ -34,7 +29,7 @@ const anyo = hoy.getFullYear();
 const mes = hoy.getMonth();
 const dia = hoy.getDate();
 //const eventos = urlBase + '/v1.0/events/byDate/2025/07/30?_elements=400&_page=1';
-const eventos = `${urlBase}/v1.0/events/byDate/${anyo}/${mes+1}/${dia}/byMunicipality/20/72?_elements=400&_page=1`;
+const eventos = `${urlBase}/v1.0/events/byDate/${anyo}/${mes+1}/${dia}/byMunicipality/20/82?_elements=400&_page=1`;
 console.log(eventos);
 fetch(eventos)
   .then((response) => response.text())
